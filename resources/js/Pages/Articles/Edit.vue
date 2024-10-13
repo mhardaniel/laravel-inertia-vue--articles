@@ -25,7 +25,7 @@ const inputFile = useTemplateRef('input-file');
 const submit = () => {
     form.transform((data) => ({
         ...data,
-        ...(inputFile.value &&
+        ...(inputFile &&
             inputFile.value.files[0] && { image: inputFile.value.files[0] }),
         _method: 'put',
     })).post(route('articles.update', props.article.id), {
@@ -116,7 +116,11 @@ const publish = () => {
                                             />
 
                                             <InputError
-                                                :message="form.errors?.image"
+                                                :message="
+                                                    form.errors.image
+                                                        ? form.errors.image
+                                                        : ''
+                                                "
                                                 class="mt-2"
                                             />
                                         </div>
