@@ -70,7 +70,7 @@ defineProps({
                 >
                     <div class="flex items-center gap-4">
                         <a
-                            href="https://github.com/mhardaniel"
+                            href="https://github.com/mhardaniel/laravel-inertia-vue--articles"
                             class="group inline-flex items-center hover:text-gray-700 focus:rounded-sm focus:outline focus:outline-2 focus:outline-red-500 dark:hover:text-white"
                         >
                             <svg
