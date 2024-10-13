@@ -91,12 +91,16 @@ const submit = () => {
                                             >Image</label
                                         >
                                         <div class="mt-2">
+                                            <!-- @vue-ignore -->
                                             <input
                                                 type="file"
                                                 @input="
                                                     (event) =>
                                                         (form.image =
-                                                            event?.target.files[0])
+                                                            event.target
+                                                                ? event.target
+                                                                      .files[0]
+                                                                : '')
                                                 "
                                                 id="image"
                                                 autocomplete="image"

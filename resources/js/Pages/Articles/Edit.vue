@@ -18,10 +18,12 @@ const form = useForm({
     link: props.article.link,
     date: props.article.date,
     content: props.article.content,
+    image: null,
 });
 
 const inputFile = useTemplateRef('input-file');
 
+<!-- @vue-ignore -->
 const submit = () => {
     form.transform((data) => ({
         ...data,
@@ -114,7 +116,7 @@ const publish = () => {
                                                 autocomplete="image"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             />
-
+                                            <!-- @vue-ignore -->
                                             <InputError
                                                 :message="
                                                     form.errors.image
