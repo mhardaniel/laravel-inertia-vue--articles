@@ -23,11 +23,11 @@ const form = useForm({
 
 const inputFile = useTemplateRef('input-file');
 
-<!-- @vue-ignore -->
 const submit = () => {
     form.transform((data) => ({
         ...data,
-        ...(inputFile &&
+        ...//@ts-ignore
+        (inputFile &&
             inputFile.value.files[0] && { image: inputFile.value.files[0] }),
         _method: 'put',
     })).post(route('articles.update', props.article.id), {
