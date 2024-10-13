@@ -26,9 +26,7 @@ const inputFile = useTemplateRef('input-file');
 const submit = () => {
     form.transform((data) => ({
         ...data,
-        ...//@ts-ignore
-        (inputFile &&
-            inputFile.value.files[0] && { image: inputFile.value.files[0] }),
+        ...(inputFile!.value!.files[0] && { image: inputFile.value.files[0] }),
         _method: 'put',
     })).post(route('articles.update', props.article.id), {
         forceFormData: true,
