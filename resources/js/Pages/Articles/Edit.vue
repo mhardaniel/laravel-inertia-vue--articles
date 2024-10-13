@@ -21,7 +21,7 @@ const form = useForm({
     image: null,
 });
 
-const inputFile = useTemplateRef('input-file');
+const inputFile = useTemplateRef('input-file')(null);
 
 const submit = () => {
     form.transform((data) => ({
