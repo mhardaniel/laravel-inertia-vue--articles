@@ -1,3 +1,7 @@
+<img width="1280" alt="welcome-page" src="https://github.com/user-attachments/assets/2d755c98-8b6a-4d94-baff-ef1b4129b726">
+<img width="1280" alt="editor-dashboard" src="https://github.com/user-attachments/assets/b6df4917-f9a2-4cad-b463-4145e6b813e8">
+<img width="1280" alt="writer-dashboard" src="https://github.com/user-attachments/assets/81b6f3d1-3d97-48ce-a035-e79ae306c529">
+
 ## Requirements
 
 https://laravel.com/docs/10.x/installation#getting-started-on-windows
