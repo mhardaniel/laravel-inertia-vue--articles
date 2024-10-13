@@ -40,7 +40,8 @@ const showingNavigationDropdown = ref(false);
 
                                 <template
                                     v-if="
-                                        $page.props.auth.user.type === 'editor'
+                                        $page.props.auth.user['type'] ===
+                                        'editor'
                                     "
                                 >
                                     <NavLink
@@ -178,8 +179,8 @@ const showingNavigationDropdown = ref(false);
                     <div class="border-t border-gray-200 pb-1 pt-4">
                         <div class="px-4">
                             <div class="text-base font-medium text-gray-800">
-                                {{ $page.props.auth.user.firstname }}
-                                {{ $page.props.auth.user.lastname }}
+                                {{ $page.props.auth.user['firstname'] }}
+                                {{ $page.props.auth.user['lastname'] }}
                             </div>
                             <div class="text-sm font-medium text-gray-500">
                                 {{ $page.props.auth.user.email }}

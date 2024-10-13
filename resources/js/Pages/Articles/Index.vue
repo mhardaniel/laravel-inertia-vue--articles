@@ -32,7 +32,9 @@ const deleteArticle = (id) => {
                         <div class="p-6 text-gray-900">List of articles</div>
                         <div class="my-auto px-5">
                             <Link
-                                v-if="$page.props.auth.user.type === 'writer'"
+                                v-if="
+                                    $page.props.auth.user['type'] === 'writer'
+                                "
                                 :href="route('articles.create')"
                                 class="my-auto rounded bg-blue-500 p-3 text-white"
                             >
@@ -165,11 +167,13 @@ const deleteArticle = (id) => {
                                                     <Link
                                                         v-if="
                                                             $page.props.auth
-                                                                .user.type ===
-                                                                'editor' ||
+                                                                .user[
+                                                                'type'
+                                                            ] === 'editor' ||
                                                             ($page.props.auth
-                                                                .user.type ===
-                                                                'writer' &&
+                                                                .user[
+                                                                'type'
+                                                            ] === 'writer' &&
                                                                 article.status ===
                                                                     'for-edit')
                                                         "

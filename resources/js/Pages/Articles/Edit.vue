@@ -25,7 +25,8 @@ const inputFile = useTemplateRef('input-file');
 const submit = () => {
     form.transform((data) => ({
         ...data,
-        ...(inputFile.value.files[0] && { image: inputFile.value.files[0] }),
+        ...(inputFile.value &&
+            inputFile.value.files[0] && { image: inputFile.value.files[0] }),
         _method: 'put',
     })).post(route('articles.update', props.article.id), {
         forceFormData: true,
@@ -109,14 +110,13 @@ const publish = () => {
                                             <input
                                                 ref="input-file"
                                                 type="file"
-                                                @input="upload($event)"
                                                 id="image"
                                                 autocomplete="image"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             />
 
                                             <InputError
-                                                :message="form.errors.image"
+                                                :message="form.errors?.image"
                                                 class="mt-2"
                                             />
                                         </div>

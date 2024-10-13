@@ -94,8 +94,9 @@ const submit = () => {
                                             <input
                                                 type="file"
                                                 @input="
-                                                    form.image =
-                                                        $event.target.files[0]
+                                                    (event) =>
+                                                        (form.image =
+                                                            $event?.target.files[0])
                                                 "
                                                 id="image"
                                                 autocomplete="image"
