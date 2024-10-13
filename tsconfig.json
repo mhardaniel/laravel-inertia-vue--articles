@@ -15,7 +15,8 @@
             "@/*": ["./resources/js/*"],
             "ziggy-js": ["./vendor/tightenco/ziggy"]
         },
-        "noImplicitAny": false
+        "noImplicitAny": false,
+        "strictNullChecks":false
     },
     "include": ["resources/js/**/*.ts", "resources/js/**/*.d.ts", "resources/js/**/*.vue"]
 }
