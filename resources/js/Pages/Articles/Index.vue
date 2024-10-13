@@ -2,11 +2,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
-defineProps({
-    articles: {
-        type: Array,
-    },
-});
+defineProps(['articles']);
 
 const form = useForm({});
 

@@ -1,24 +1,19 @@
 <script setup lang="ts">
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head, Link, useForm } from "@inertiajs/vue3";
-import DangerButton from "@/Components/DangerButton.vue";
+import DangerButton from '@/Components/DangerButton.vue';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import { Head, Link, useForm } from '@inertiajs/vue3';
 
-defineProps({
-    users: {
-        type: Array,
-    },
-});
+defineProps(['users']);
 
 const form = useForm({});
 
 const deleteUser = (id) => {
-    if (confirm("Are you sure you want to move this to trash")) {
-        form.delete(route("users.destroy", { id: id }), {
+    if (confirm('Are you sure you want to move this to trash')) {
+        form.delete(route('users.destroy', { id: id }), {
             preserveScroll: true,
         });
     }
 };
-
 </script>
 
 <template>
@@ -26,20 +21,20 @@ const deleteUser = (id) => {
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="text-xl font-semibold leading-tight text-gray-800">
                 User Management
             </h2>
         </template>
 
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                     <div class="flex justify-between">
                         <div class="p-6 text-gray-900">List of users</div>
                         <div class="my-auto px-5">
                             <Link
                                 :href="route('users.create')"
-                                class="p-3 rounded my-auto text-white bg-blue-500"
+                                class="my-auto rounded bg-blue-500 p-3 text-white"
                             >
                                 Create User
                             </Link>
@@ -52,7 +47,7 @@ const deleteUser = (id) => {
                             >
                                 <div class="overflow-hidden">
                                     <table
-                                        class="min-w-full border rounded text-left text-sm font-light text-surface "
+                                        class="text-surface min-w-full rounded border text-left text-sm font-light"
                                     >
                                         <thead
                                             class="border-b border-neutral-200 font-medium dark:border-white/10"
@@ -70,7 +65,7 @@ const deleteUser = (id) => {
                                                 >
                                                     First Name
                                                 </th>
-                                                 <th
+                                                <th
                                                     scope="col"
                                                     class="px-6 py-4"
                                                 >
@@ -82,13 +77,13 @@ const deleteUser = (id) => {
                                                 >
                                                     Email
                                                 </th>
-                                                 <th
+                                                <th
                                                     scope="col"
                                                     class="px-6 py-4"
                                                 >
                                                     Type
                                                 </th>
-                                                 <th
+                                                <th
                                                     scope="col"
                                                     class="px-6 py-4"
                                                 >
@@ -124,19 +119,19 @@ const deleteUser = (id) => {
                                                 >
                                                     {{ user.lastname }}
                                                 </td>
-                                                 <td
+                                                <td
                                                     class="whitespace-nowrap px-6 py-4"
                                                 >
                                                     {{ user.email }}
                                                 </td>
 
-                                                   <td
+                                                <td
                                                     class="whitespace-nowrap px-6 py-4"
                                                 >
                                                     {{ user.type }}
                                                 </td>
 
-                                                   <td
+                                                <td
                                                     class="whitespace-nowrap px-6 py-4"
                                                 >
                                                     {{ user.status }}
@@ -145,24 +140,21 @@ const deleteUser = (id) => {
                                                 <td
                                                     class="whitespace-nowrap px-6 py-4"
                                                 >
-
                                                     <Link
                                                         :href="
                                                             route(
                                                                 'users.edit',
-                                                                { id: user.id }
+                                                                { id: user.id },
                                                             )
                                                         "
-                                                        class="ml-2 p-3 rounded my-auto text-white bg-blue-500"
+                                                        class="my-auto ml-2 rounded bg-blue-500 p-3 text-white"
                                                     >
                                                         Edit
                                                     </Link>
                                                     <DangerButton
-                                                        class="ml-2 py-3 rounded my-auto text-white bg-red-500"
+                                                        class="my-auto ml-2 rounded bg-red-500 py-3 text-white"
                                                         @click="
-                                                            deleteUser(
-                                                                user.id
-                                                            )
+                                                            deleteUser(user.id)
                                                         "
                                                     >
                                                         Delete

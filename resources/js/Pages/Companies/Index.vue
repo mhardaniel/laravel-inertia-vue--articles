@@ -1,24 +1,19 @@
 <script setup lang="ts">
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head, Link, useForm } from "@inertiajs/vue3";
-import DangerButton from "@/Components/DangerButton.vue";
+import DangerButton from '@/Components/DangerButton.vue';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import { Head, Link, useForm } from '@inertiajs/vue3';
 
-defineProps({
-    companies: {
-        type: Array,
-    },
-});
+defineProps(['companies']);
 
 const form = useForm({});
 
 const deleteCompany = (id) => {
-    if (confirm("Are you sure you want to move this to trash")) {
-        form.delete(route("companies.destroy", { id: id }), {
+    if (confirm('Are you sure you want to move this to trash')) {
+        form.delete(route('companies.destroy', { id: id }), {
             preserveScroll: true,
         });
     }
 };
-
 </script>
 
 <template>
@@ -26,20 +21,20 @@ const deleteCompany = (id) => {
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="text-xl font-semibold leading-tight text-gray-800">
                 Company Management
             </h2>
         </template>
 
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                     <div class="flex justify-between">
                         <div class="p-6 text-gray-900">List of companies</div>
                         <div class="my-auto px-5">
                             <Link
                                 :href="route('companies.create')"
-                                class="p-3 rounded my-auto text-white bg-blue-500"
+                                class="my-auto rounded bg-blue-500 p-3 text-white"
                             >
                                 Create Company
                             </Link>
@@ -52,7 +47,7 @@ const deleteCompany = (id) => {
                             >
                                 <div class="overflow-hidden">
                                     <table
-                                        class="min-w-full border rounded text-left text-sm font-light text-surface "
+                                        class="text-surface min-w-full rounded border text-left text-sm font-light"
                                     >
                                         <thead
                                             class="border-b border-neutral-200 font-medium dark:border-white/10"
@@ -70,13 +65,13 @@ const deleteCompany = (id) => {
                                                 >
                                                     Logo
                                                 </th>
-                                                 <th
+                                                <th
                                                     scope="col"
                                                     class="px-6 py-4"
                                                 >
                                                     Name
                                                 </th>
-                                                 <th
+                                                <th
                                                     scope="col"
                                                     class="px-6 py-4"
                                                 >
@@ -93,7 +88,9 @@ const deleteCompany = (id) => {
                                         </thead>
                                         <tbody>
                                             <tr
-                                                v-for="(company, index) in companies"
+                                                v-for="(
+                                                    company, index
+                                                ) in companies"
                                                 :key="index"
                                                 class="border-b border-neutral-200 dark:border-white/10"
                                             >
@@ -112,7 +109,7 @@ const deleteCompany = (id) => {
                                                 >
                                                     {{ company.name }}
                                                 </td>
-                                                   <td
+                                                <td
                                                     class="whitespace-nowrap px-6 py-4"
                                                 >
                                                     {{ company.status }}
@@ -121,23 +118,24 @@ const deleteCompany = (id) => {
                                                 <td
                                                     class="whitespace-nowrap px-6 py-4"
                                                 >
-
                                                     <Link
                                                         :href="
                                                             route(
                                                                 'companies.edit',
-                                                                { id: company.id }
+                                                                {
+                                                                    id: company.id,
+                                                                },
                                                             )
                                                         "
-                                                        class="ml-2 p-3 rounded my-auto text-white bg-blue-500"
+                                                        class="my-auto ml-2 rounded bg-blue-500 p-3 text-white"
                                                     >
                                                         Edit
                                                     </Link>
                                                     <DangerButton
-                                                        class="ml-2 py-3 rounded my-auto text-white bg-red-500"
+                                                        class="my-auto ml-2 rounded bg-red-500 py-3 text-white"
                                                         @click="
                                                             deleteCompany(
-                                                                company.id
+                                                                company.id,
                                                             )
                                                         "
                                                     >
