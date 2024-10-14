@@ -7,7 +7,7 @@ defineProps(['companies']);
 
 const form = useForm({});
 
-const deleteCompany = (id) => {
+const deleteCompany = (id: number) => {
     if (confirm('Are you sure you want to move this to trash')) {
         form.delete(route('companies.destroy', { id: id }), {
             preserveScroll: true,

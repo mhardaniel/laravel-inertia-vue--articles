@@ -7,7 +7,7 @@ defineProps(['users']);
 
 const form = useForm({});
 
-const deleteUser = (id) => {
+const deleteUser = (id: number) => {
     if (confirm('Are you sure you want to move this to trash')) {
         form.delete(route('users.destroy', { id: id }), {
             preserveScroll: true,
