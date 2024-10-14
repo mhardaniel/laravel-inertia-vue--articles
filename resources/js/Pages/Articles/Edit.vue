@@ -7,9 +7,10 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
-import { useTemplateRef } from 'vue';
+import { ref } from 'vue';
 
 const props = defineProps(['article', 'companies']);
+const file = ref<File | null>();
 
 const form = useForm({
     id: props.article.id,
@@ -21,15 +22,10 @@ const form = useForm({
     image: null,
 });
 
-const inputFile = useTemplateRef('input-file');
-
 const submit = () => {
     form.transform((data) => ({
         ...data,
-        ...(inputFile &&
-            inputFile!.value!.files[0] && {
-                image: inputFile!.value!.files[0],
-            }),
+        ...{ image: file.value },
         _method: 'put',
     })).post(route('articles.update', props.article.id), {
         forceFormData: true,
@@ -42,6 +38,13 @@ const publish = () => {
         status: 'published',
     })).put(route('articles.update', props.article.id), {});
 };
+
+function onFileChanged($event: Event) {
+    const target = $event.target as HTMLInputElement;
+    if (target && target.files) {
+        file.value = target.files[0];
+    }
+}
 </script>
 
 <template>
@@ -83,6 +86,7 @@ const publish = () => {
                                                 id="company"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 v-model="form.company"
+                                                autocomplete="company"
                                             >
                                                 <option disabled value="">
                                                     Please select one
@@ -111,10 +115,10 @@ const publish = () => {
                                         >
                                         <div class="mt-2">
                                             <input
-                                                ref="input-file"
                                                 type="file"
                                                 id="image"
                                                 autocomplete="image"
+                                                @input="onFileChanged($event)"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             />
                                             <InputError
@@ -174,7 +178,7 @@ const publish = () => {
 
                                     <div class="sm:col-span-3">
                                         <label
-                                            for="date"
+                                            for="dp-input-date"
                                             class="block text-sm font-medium leading-6 text-gray-900"
                                             >Date</label
                                         >
@@ -199,9 +203,9 @@ const publish = () => {
                                     </div>
 
                                     <div class="sm:col-span-3">
-                                        <label
+                                        <span
                                             class="block text-sm font-medium leading-6 text-gray-900"
-                                            >Content</label
+                                            >Content</span
                                         >
                                         <div class="mt-2">
                                             <Editor v-model="form.content" />

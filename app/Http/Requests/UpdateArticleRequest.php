@@ -23,7 +23,7 @@ class UpdateArticleRequest extends FormRequest
     {
         return [
             'company' => 'required',
-            'image' => 'sometimes|required|image',
+            'image' => 'nullable|image',
             'title' => 'required',
             'link' => 'required|url',
             'content' => 'required',
