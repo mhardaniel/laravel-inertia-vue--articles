@@ -7,7 +7,7 @@ import { Head, Link, useForm } from '@inertiajs/vue3';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 
-const props = defineProps(['companies']);
+defineProps(['companies']);
 
 const d = new Date();
 

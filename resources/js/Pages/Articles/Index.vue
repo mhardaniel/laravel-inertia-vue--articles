@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 
 defineProps(['articles']);
 
-const form = useForm({});
+//const form = useForm({});
 
-const deleteArticle = (id) => {
-    if (confirm('Are you sure you want to move this to trash')) {
-        form.delete(route('articles.destroy', { id: id }), {
-            preserveScroll: true,
-        });
-    }
-};
+//const deleteArticle = (id) => {
+//    if (confirm('Are you sure you want to move this to trash')) {
+//        form.delete(route('articles.destroy', { id: id }), {
+//            preserveScroll: true,
+//        });
+//    }
+//};
 </script>
 
 <template>
